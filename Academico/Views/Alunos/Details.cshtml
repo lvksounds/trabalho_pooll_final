@@ -1,0 +1,61 @@
+﻿@model Academico.Models.Aluno
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Aluno</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="text-primary">Disciplinas cadastradas</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Semestre</th>
+                        <th>Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Disciplinas)
+                    {
+                        <tr>
+                            <td>
+                                @item.Nome
+                            </td>
+                            <td>
+                                @item.Semestre
+                            </td>
+                            <td>
+                                @item.Ano
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AlunoId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

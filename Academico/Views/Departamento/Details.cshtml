@@ -1,0 +1,34 @@
+﻿@model Academico.Models.Departamento
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Departamento</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Instituicao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Instituicao.InstituicaoId)
+        </dd>
+    </dl>
+</div>
+@{
+    await Html.RenderPartialAsync("~/Views/Departamento/_ComCursos.cshtml", Model.Cursos.ToList());
+}
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
