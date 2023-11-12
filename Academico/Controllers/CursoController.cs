@@ -93,8 +93,19 @@ namespace Academico.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cursoDisciplina);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Add(cursoDisciplina);
+                    await _context.SaveChangesAsync();
+
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = ex.Message;
+                    ErrorPartialModel errorView = new ErrorPartialModel(ex.Source, ex.Message);
+                    
+                    return PartialView("~/Views/Shared/_ErrorView.cshtml", errorView);
+                }
                 return RedirectToAction(nameof(Index));
             }
 

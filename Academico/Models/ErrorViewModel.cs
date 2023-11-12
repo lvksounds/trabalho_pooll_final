@@ -1,4 +1,4 @@
-namespace Academico.Models
+﻿namespace Academico.Models
 {
     public class ErrorViewModel
     {

@@ -1,0 +1,19 @@
+﻿@model Academico.Models.ErrorPartialModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="alert alert-danger" role="alert">
+    <h4>Ops, parece que houve um problema na sua requisição :(</h4>
+    <hr />
+    <p>Erro: @Model.Mensagem</p>
+    <p>Por favor tente novamente mais tarde</p>
+    <button id="back-btn" class="btn btn-outline-secondary">Voltar</button>
+</div>
+
+<script>
+    btn = document.querySelector('#back-btn').addEventListener("click", () => {
+        history.back(-1);
+    })
+</script>
